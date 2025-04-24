@@ -6,25 +6,43 @@ import 'package:flutter/material.dart';
 class LoginModel extends FlutterFlowModel<LoginWidget> {
   ///  State fields for stateful widgets in this page.
 
-  // State field(s) for emailAddress widget.
-  FocusNode? emailAddressFocusNode;
-  TextEditingController? emailAddressTextController;
-  String? Function(BuildContext, String?)? emailAddressTextControllerValidator;
-  // State field(s) for password widget.
+  final formKey = GlobalKey<FormState>();
+  // State field(s) for EmailID widget.
+  FocusNode? emailIDFocusNode;
+  TextEditingController? emailIDTextController;
+  String? Function(BuildContext, String?)? emailIDTextControllerValidator;
+  String? _emailIDTextControllerValidator(BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return 'Email Address is required';
+    }
+
+    return null;
+  }
+
+  // State field(s) for Password widget.
   FocusNode? passwordFocusNode;
   TextEditingController? passwordTextController;
   late bool passwordVisibility;
   String? Function(BuildContext, String?)? passwordTextControllerValidator;
+  String? _passwordTextControllerValidator(BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return 'Password is required';
+    }
+
+    return null;
+  }
 
   @override
   void initState(BuildContext context) {
+    emailIDTextControllerValidator = _emailIDTextControllerValidator;
     passwordVisibility = false;
+    passwordTextControllerValidator = _passwordTextControllerValidator;
   }
 
   @override
   void dispose() {
-    emailAddressFocusNode?.dispose();
-    emailAddressTextController?.dispose();
+    emailIDFocusNode?.dispose();
+    emailIDTextController?.dispose();
 
     passwordFocusNode?.dispose();
     passwordTextController?.dispose();

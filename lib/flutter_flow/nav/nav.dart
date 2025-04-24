@@ -104,6 +104,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: ReportIssueWidget.routeName,
           path: ReportIssueWidget.routePath,
           builder: (context, params) => ReportIssueWidget(),
+        ),
+        FFRoute(
+          name: ForgotPasswordWidget.routeName,
+          path: ForgotPasswordWidget.routePath,
+          builder: (context, params) => ForgotPasswordWidget(),
+        ),
+        FFRoute(
+          name: RequestToPasswordChangeWidget.routeName,
+          path: RequestToPasswordChangeWidget.routePath,
+          builder: (context, params) => RequestToPasswordChangeWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

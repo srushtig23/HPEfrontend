@@ -6,44 +6,69 @@ import 'package:flutter/material.dart';
 class CreateAccountModel extends FlutterFlowModel<CreateAccountWidget> {
   ///  State fields for stateful widgets in this page.
 
-  // State field(s) for Name widget.
-  FocusNode? nameFocusNode;
-  TextEditingController? nameTextController;
-  String? Function(BuildContext, String?)? nameTextControllerValidator;
-  // State field(s) for emailAddress widget.
-  FocusNode? emailAddressFocusNode;
-  TextEditingController? emailAddressTextController;
-  String? Function(BuildContext, String?)? emailAddressTextControllerValidator;
+  final formKey = GlobalKey<FormState>();
+  // State field(s) for emailID widget.
+  FocusNode? emailIDFocusNode;
+  TextEditingController? emailIDTextController;
+  String? Function(BuildContext, String?)? emailIDTextControllerValidator;
+  String? _emailIDTextControllerValidator(BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return 'Email Address is required';
+    }
+
+    if (!RegExp(kTextValidatorEmailRegex).hasMatch(val)) {
+      return 'Has to be a valid email address.';
+    }
+    return null;
+  }
+
   // State field(s) for password widget.
   FocusNode? passwordFocusNode;
   TextEditingController? passwordTextController;
   late bool passwordVisibility;
   String? Function(BuildContext, String?)? passwordTextControllerValidator;
-  // State field(s) for passwordConfirm widget.
-  FocusNode? passwordConfirmFocusNode;
-  TextEditingController? passwordConfirmTextController;
-  late bool passwordConfirmVisibility;
+  String? _passwordTextControllerValidator(BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return 'password should be 8 characters';
+    }
+
+    return null;
+  }
+
+  // State field(s) for confirmPassword widget.
+  FocusNode? confirmPasswordFocusNode;
+  TextEditingController? confirmPasswordTextController;
+  late bool confirmPasswordVisibility;
   String? Function(BuildContext, String?)?
-      passwordConfirmTextControllerValidator;
+      confirmPasswordTextControllerValidator;
+  String? _confirmPasswordTextControllerValidator(
+      BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return 'Confirm Password is required';
+    }
+
+    return null;
+  }
 
   @override
   void initState(BuildContext context) {
+    emailIDTextControllerValidator = _emailIDTextControllerValidator;
     passwordVisibility = false;
-    passwordConfirmVisibility = false;
+    passwordTextControllerValidator = _passwordTextControllerValidator;
+    confirmPasswordVisibility = false;
+    confirmPasswordTextControllerValidator =
+        _confirmPasswordTextControllerValidator;
   }
 
   @override
   void dispose() {
-    nameFocusNode?.dispose();
-    nameTextController?.dispose();
-
-    emailAddressFocusNode?.dispose();
-    emailAddressTextController?.dispose();
+    emailIDFocusNode?.dispose();
+    emailIDTextController?.dispose();
 
     passwordFocusNode?.dispose();
     passwordTextController?.dispose();
 
-    passwordConfirmFocusNode?.dispose();
-    passwordConfirmTextController?.dispose();
+    confirmPasswordFocusNode?.dispose();
+    confirmPasswordTextController?.dispose();
   }
 }

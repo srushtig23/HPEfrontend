@@ -4,3 +4,7 @@ export '/pages/create_account/create_account_widget.dart'
     show CreateAccountWidget;
 export '/pages/login/login_widget.dart' show LoginWidget;
 export '/pages/report_issue/report_issue_widget.dart' show ReportIssueWidget;
+export '/pages/forgot_password/forgot_password_widget.dart'
+    show ForgotPasswordWidget;
+export '/pages/request_to_password_change/request_to_password_change_widget.dart'
+    show RequestToPasswordChangeWidget;

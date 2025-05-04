@@ -1,8 +1,8 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import 'home_page_widget.dart' show HomePageWidget;
+import 'failure_widget.dart' show FailureWidget;
 import 'package:flutter/material.dart';
 
-class HomePageModel extends FlutterFlowModel<HomePageWidget> {
+class FailureModel extends FlutterFlowModel<FailureWidget> {
   @override
   void initState(BuildContext context) {}
 

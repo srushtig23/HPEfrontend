@@ -95,7 +95,7 @@ class _RequestToPasswordChangeWidgetState
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   10.0, 12.0, 10.0, 12.0),
                               child: Text(
-                                'Request to password change has been sent to you email address',
+                                'Request to password change has been sent to your email address',
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(

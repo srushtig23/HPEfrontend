@@ -3,6 +3,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '/backend/schema/structs/index.dart';
+
 
 import '/auth/base_auth_user_provider.dart';
 
@@ -77,18 +79,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       refreshListenable: appStateNotifier,
       navigatorKey: appNavigatorKey,
       errorBuilder: (context, state) =>
-          appStateNotifier.loggedIn ? ReportIssueWidget() : LoginWidget(),
+          appStateNotifier.loggedIn ? HomeWidget() : LoginWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) =>
-              appStateNotifier.loggedIn ? ReportIssueWidget() : LoginWidget(),
-        ),
-        FFRoute(
-          name: HomePageWidget.routeName,
-          path: HomePageWidget.routePath,
-          builder: (context, params) => HomePageWidget(),
+              appStateNotifier.loggedIn ? HomeWidget() : LoginWidget(),
         ),
         FFRoute(
           name: CreateAccountWidget.routeName,
@@ -114,6 +111,50 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: RequestToPasswordChangeWidget.routeName,
           path: RequestToPasswordChangeWidget.routePath,
           builder: (context, params) => RequestToPasswordChangeWidget(),
+        ),
+        FFRoute(
+          name: ProfileWidget.routeName,
+          path: ProfileWidget.routePath,
+          builder: (context, params) => ProfileWidget(),
+        ),
+        FFRoute(
+          name: ViewReportWidget.routeName,
+          path: ViewReportWidget.routePath,
+          builder: (context, params) => ViewReportWidget(
+            apires: params.getParam(
+              'apires',
+              ParamType.JSON,
+            ),
+            searchQuery: params.getParam(
+              'searchQuery',
+              ParamType.String,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: SuccessWidget.routeName,
+          path: SuccessWidget.routePath,
+          builder: (context, params) => SuccessWidget(),
+        ),
+        FFRoute(
+          name: FailureWidget.routeName,
+          path: FailureWidget.routePath,
+          builder: (context, params) => FailureWidget(),
+        ),
+        FFRoute(
+          name: TestingreportpageCopyWidget.routeName,
+          path: TestingreportpageCopyWidget.routePath,
+          builder: (context, params) => TestingreportpageCopyWidget(),
+        ),
+        FFRoute(
+          name: ReportsWidget.routeName,
+          path: ReportsWidget.routePath,
+          builder: (context, params) => ReportsWidget(),
+        ),
+        FFRoute(
+          name: HomeWidget.routeName,
+          path: HomeWidget.routePath,
+          builder: (context, params) => HomeWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -232,6 +273,7 @@ class FFParameters {
     String paramName,
     ParamType type, {
     bool isList = false,
+    StructBuilder<T>? structBuilder,
   }) {
     if (futureParamValues.containsKey(paramName)) {
       return futureParamValues[paramName];
@@ -249,6 +291,7 @@ class FFParameters {
       param,
       type,
       isList,
+      structBuilder: structBuilder,
     );
   }
 }

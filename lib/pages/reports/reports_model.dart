@@ -1,8 +1,8 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import 'report_issue_widget.dart' show ReportIssueWidget;
+import 'reports_widget.dart' show ReportsWidget;
 import 'package:flutter/material.dart';
 
-class ReportIssueModel extends FlutterFlowModel<ReportIssueWidget> {
+class ReportsModel extends FlutterFlowModel<ReportsWidget> {
   @override
   void initState(BuildContext context) {}
 

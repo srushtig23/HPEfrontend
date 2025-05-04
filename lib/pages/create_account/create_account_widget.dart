@@ -1,3 +1,4 @@
+import '/auth/supabase_auth/auth_util.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -71,18 +72,6 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget>
         trigger: AnimationTrigger.onPageLoad,
         effectsBuilder: () => [
           MoveEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 600.0.ms,
-            begin: Offset(-100.0, 0.0),
-            end: Offset(0.0, 0.0),
-          ),
-        ],
-      ),
-      'imageOnPageLoadAnimation3': AnimationInfo(
-        trigger: AnimationTrigger.onPageLoad,
-        effectsBuilder: () => [
-          MoveEffect(
             curve: Curves.easeIn,
             delay: 0.0.ms,
             duration: 1320.0.ms,
@@ -112,7 +101,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget>
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
+        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         body: SafeArea(
           top: true,
           child: Stack(
@@ -136,8 +125,8 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget>
                                 borderRadius: BorderRadius.circular(8.0),
                                 child: Image.asset(
                                   'assets/images/herr1.png',
-                                  width: 150.0,
-                                  height: 150.0,
+                                  width: 89.7,
+                                  height: 118.9,
                                   fit: BoxFit.cover,
                                 ),
                               ).animateOnPageLoad(
@@ -193,7 +182,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget>
                                           Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 30.0, 0.0, 10.0),
+                                                    0.0, 10.0, 0.0, 10.0),
                                             child: Container(
                                               width: 350.0,
                                               child: TextFormField(
@@ -356,7 +345,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget>
                                           Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 10.0, 0.0, 10.0),
+                                                    0.0, 0.0, 0.0, 10.0),
                                             child: Container(
                                               width: 350.0,
                                               child: TextFormField(
@@ -537,7 +526,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget>
                                           Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 10.0, 0.0, 30.0),
+                                                    0.0, 0.0, 0.0, 30.0),
                                             child: Container(
                                               width: 350.0,
                                               child: TextFormField(
@@ -721,9 +710,11 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget>
                                                     0.0, 0.0, 0.0, 10.0),
                                             child: FFButtonWidget(
                                               onPressed: () async {
+                                                GoRouter.of(context)
+                                                    .prepareAuthEvent();
                                                 if (_model
                                                         .passwordTextController
-                                                        .text ==
+                                                        .text !=
                                                     _model
                                                         .confirmPasswordTextController
                                                         .text) {
@@ -731,59 +722,28 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget>
                                                       .showSnackBar(
                                                     SnackBar(
                                                       content: Text(
-                                                        'Successfully created the account',
-                                                        style: TextStyle(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .primaryText,
-                                                          fontSize: 16.0,
-                                                        ),
+                                                        'Passwords don\'t match!',
                                                       ),
-                                                      duration: Duration(
-                                                          milliseconds: 2400),
-                                                      backgroundColor:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .secondary,
                                                     ),
                                                   );
-
-                                                  context.pushNamed(
-                                                    LoginWidget.routeName,
-                                                    extra: <String, dynamic>{
-                                                      kTransitionInfoKey:
-                                                          TransitionInfo(
-                                                        hasTransition: true,
-                                                        transitionType:
-                                                            PageTransitionType
-                                                                .fade,
-                                                        duration: Duration(
-                                                            milliseconds: 4),
-                                                      ),
-                                                    },
-                                                  );
-                                                } else {
-                                                  ScaffoldMessenger.of(context)
-                                                      .showSnackBar(
-                                                    SnackBar(
-                                                      content: Text(
-                                                        'password do not match',
-                                                        style: TextStyle(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .primaryText,
-                                                          fontSize: 14.0,
-                                                        ),
-                                                      ),
-                                                      duration: Duration(
-                                                          milliseconds: 2849),
-                                                      backgroundColor:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .secondary,
-                                                    ),
-                                                  );
+                                                  return;
                                                 }
+
+                                                final user = await authManager
+                                                    .createAccountWithEmail(
+                                                  context,
+                                                  _model.emailIDTextController
+                                                      .text,
+                                                  _model.passwordTextController
+                                                      .text,
+                                                );
+                                                if (user == null) {
+                                                  return;
+                                                }
+
+                                                context.pushNamedAuth(
+                                                    LoginWidget.routeName,
+                                                    context.mounted);
                                               },
                                               text: 'Create account',
                                               options: FFButtonOptions(
@@ -877,7 +837,8 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget>
                                                       TransitionInfo(
                                                     hasTransition: true,
                                                     transitionType:
-                                                        PageTransitionType.fade,
+                                                        PageTransitionType
+                                                            .rightToLeft,
                                                     duration: Duration(
                                                         milliseconds: 3),
                                                   ),
@@ -930,6 +891,37 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget>
                                       'formOnPageLoadAnimation']!),
                                 ),
                               ),
+                              if (responsiveVisibility(
+                                context: context,
+                                tablet: false,
+                                tabletLandscape: false,
+                                desktop: false,
+                              ))
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(8.0),
+                                  child: Image.asset(
+                                    'assets/images/1safe.png',
+                                    width: 80.0,
+                                    height: 80.0,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                              if (responsiveVisibility(
+                                context: context,
+                                tablet: false,
+                                tabletLandscape: false,
+                                desktop: false,
+                              ))
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(8.0),
+                                  child: Image.asset(
+                                    'assets/images/A_group_of_Multiethnic_women_illustration___Premium_AI-generated_image.png',
+                                    width: 100.0,
+                                    height: 100.0,
+                                    fit: BoxFit.cover,
+                                    alignment: Alignment(0.0, 1.0),
+                                  ),
+                                ),
                             ],
                           ),
                         ),
@@ -940,50 +932,14 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget>
               ),
               if (responsiveVisibility(
                 context: context,
-                tablet: false,
-                tabletLandscape: false,
-                desktop: false,
+                phone: false,
               ))
                 Align(
-                  alignment: AlignmentDirectional(-1.0, 1.12),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(8.0),
-                    child: Image.asset(
-                      'assets/images/A_group_of_Multiethnic_women_illustration___Premium_AI-generated_image.png',
-                      width: 190.0,
-                      height: 200.0,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ),
-              if (responsiveVisibility(
-                context: context,
-                tablet: false,
-                tabletLandscape: false,
-                desktop: false,
-              ))
-                Align(
-                  alignment: AlignmentDirectional(1.0, 1.12),
+                  alignment: AlignmentDirectional(1.04, 1.06),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(8.0),
                     child: Image.asset(
                       'assets/images/1safe.png',
-                      width: 190.0,
-                      height: 200.0,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ),
-              if (responsiveVisibility(
-                context: context,
-                phone: false,
-              ))
-                Align(
-                  alignment: AlignmentDirectional(-1.11, 1.05),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(8.0),
-                    child: Image.asset(
-                      'assets/images/A_group_of_Multiethnic_women_illustration___Premium_AI-generated_image.png',
                       width: 550.0,
                       height: 550.0,
                       fit: BoxFit.cover,
@@ -996,17 +952,16 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget>
                 phone: false,
               ))
                 Align(
-                  alignment: AlignmentDirectional(1.0, 1.04),
+                  alignment: AlignmentDirectional(-1.14, 1.06),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(8.0),
                     child: Image.asset(
-                      'assets/images/1safe.png',
+                      'assets/images/A_group_of_Multiethnic_women_illustration___Premium_AI-generated_image.png',
                       width: 550.0,
                       height: 550.0,
                       fit: BoxFit.cover,
                     ),
-                  ).animateOnPageLoad(
-                      animationsMap['imageOnPageLoadAnimation3']!),
+                  ),
                 ),
             ],
           ),

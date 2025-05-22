@@ -220,8 +220,10 @@ dynamic deserializeParam<T>(
             return SampleTableRow(data);
           case ReviewVerfiedRow:
             return ReviewVerfiedRow(data);
-          case GuestReviewsRow:
-            return GuestReviewsRow(data);
+          case CrimeRatingsRow:
+            return CrimeRatingsRow(data);
+          case CrimeDBRow:
+            return CrimeDBRow(data);
           default:
             return null;
         }

@@ -8,7 +8,6 @@ export '/pages/forgot_password/forgot_password_widget.dart'
 export '/pages/request_to_password_change/request_to_password_change_widget.dart'
     show RequestToPasswordChangeWidget;
 export '/pages/profile/profile_widget.dart' show ProfileWidget;
-export '/pages/view_report/view_report_widget.dart' show ViewReportWidget;
 export '/pages/success/success_widget.dart' show SuccessWidget;
 export '/pages/failure/failure_widget.dart' show FailureWidget;
 export '/pages/testingreportpage_copy/testingreportpage_copy_widget.dart'

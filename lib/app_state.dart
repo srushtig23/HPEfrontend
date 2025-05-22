@@ -48,4 +48,22 @@ class FFAppState extends ChangeNotifier {
   void insertAtIndexInApires(int index, String value) {
     apires.insert(index, value);
   }
+
+  String _devloc = '';
+  String get devloc => _devloc;
+  set devloc(String value) {
+    _devloc = value;
+  }
+
+  double _devlat = 0.0;
+  double get devlat => _devlat;
+  set devlat(double value) {
+    _devlat = value;
+  }
+
+  double _devlong = 0.0;
+  double get devlong => _devlong;
+  set devlong(double value) {
+    _devlong = value;
+  }
 }

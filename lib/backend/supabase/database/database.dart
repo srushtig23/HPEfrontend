@@ -7,4 +7,5 @@ export 'table.dart';
 
 export 'tables/sample_table.dart';
 export 'tables/review_verfied.dart';
-export 'tables/guest_reviews.dart';
+export 'tables/crime_ratings.dart';
+export 'tables/crime_d_b.dart';

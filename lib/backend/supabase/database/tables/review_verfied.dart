@@ -32,4 +32,7 @@ class ReviewVerfiedRow extends SupabaseDataRow {
 
   double? get long => getField<double>('long');
   set long(double? value) => setField<double>('long', value);
+
+  double? get rating => getField<double>('rating');
+  set rating(double? value) => setField<double>('rating', value);
 }

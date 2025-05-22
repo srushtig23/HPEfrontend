@@ -100,7 +100,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: ReportIssueWidget.routeName,
           path: ReportIssueWidget.routePath,
-          builder: (context, params) => ReportIssueWidget(),
+          builder: (context, params) => ReportIssueWidget(
+            authuserId: params.getParam(
+              'authuserId',
+              ParamType.String,
+            ),
+          ),
         ),
         FFRoute(
           name: ForgotPasswordWidget.routeName,
@@ -115,18 +120,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: ProfileWidget.routeName,
           path: ProfileWidget.routePath,
-          builder: (context, params) => ProfileWidget(),
-        ),
-        FFRoute(
-          name: ViewReportWidget.routeName,
-          path: ViewReportWidget.routePath,
-          builder: (context, params) => ViewReportWidget(
-            apires: params.getParam(
-              'apires',
-              ParamType.JSON,
-            ),
-            searchQuery: params.getParam(
-              'searchQuery',
+          builder: (context, params) => ProfileWidget(
+            passeduserid: params.getParam(
+              'passeduserid',
               ParamType.String,
             ),
           ),

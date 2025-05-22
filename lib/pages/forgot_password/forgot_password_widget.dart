@@ -49,7 +49,7 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        backgroundColor: Color(0xFFFCE2D3),
         body: SafeArea(
           top: true,
           child: Align(
@@ -199,8 +199,7 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
                                             BorderRadius.circular(8.0),
                                       ),
                                       filled: true,
-                                      fillColor: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
+                                      fillColor: Color(0xFFFEF5EB),
                                       contentPadding:
                                           EdgeInsetsDirectional.fromSTEB(
                                               12.0, 17.0, 12.0, 17.0),

@@ -1,7 +1,10 @@
+import '/auth/supabase_auth/auth_util.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'request_to_password_change_model.dart';
 export 'request_to_password_change_model.dart';
 
@@ -26,6 +29,14 @@ class _RequestToPasswordChangeWidgetState
   void initState() {
     super.initState();
     _model = createModel(context, () => RequestToPasswordChangeModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      await launchUrl(Uri(
+        scheme: 'mailto',
+        path: currentUserEmail,
+      ));
+    });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }

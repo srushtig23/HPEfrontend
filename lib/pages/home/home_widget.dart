@@ -1,3 +1,4 @@
+import '/auth/supabase_auth/auth_util.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -250,77 +251,38 @@ class _HomeWidgetState extends State<HomeWidget> {
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      Column(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(
-                            Icons.home,
-                            color: Color(0xFFCE035F),
-                            size: 24.0,
-                          ),
-                          Text(
-                            'Home',
-                            style:
-                                FlutterFlowTheme.of(context).bodySmall.override(
-                                      font: GoogleFonts.spaceGrotesk(
-                                        fontWeight: FontWeight.w600,
-                                        fontStyle: FlutterFlowTheme.of(context)
-                                            .bodySmall
-                                            .fontStyle,
-                                      ),
-                                      color: Color(0xFFCE035F),
-                                      fontSize: 12.0,
-                                      letterSpacing: 0.0,
-                                      fontWeight: FontWeight.w600,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .bodySmall
-                                          .fontStyle,
-                                    ),
-                          ),
-                        ],
-                      ),
                       InkWell(
                         splashColor: Colors.transparent,
                         focusColor: Colors.transparent,
                         hoverColor: Colors.transparent,
                         highlightColor: Colors.transparent,
                         onTap: () async {
-                          context.pushNamed(ReportIssueWidget.routeName);
+                          context.pushNamed(HomeWidget.routeName);
                         },
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            InkWell(
-                              splashColor: Colors.transparent,
-                              focusColor: Colors.transparent,
-                              hoverColor: Colors.transparent,
-                              highlightColor: Colors.transparent,
-                              onTap: () async {
-                                context.pushNamed(ReportIssueWidget.routeName);
-                              },
-                              child: Icon(
-                                Icons.rate_review_rounded,
-                                color: Color(0xFF57636C),
-                                size: 24.0,
-                              ),
+                            Icon(
+                              Icons.home,
+                              color: Color(0xFFCE035F),
+                              size: 24.0,
                             ),
                             Text(
-                              'Report',
+                              'Home',
                               style: FlutterFlowTheme.of(context)
                                   .bodySmall
                                   .override(
                                     font: GoogleFonts.spaceGrotesk(
-                                      fontWeight: FontWeight.normal,
+                                      fontWeight: FontWeight.w600,
                                       fontStyle: FlutterFlowTheme.of(context)
                                           .bodySmall
                                           .fontStyle,
                                     ),
-                                    color: Color(0xFF57636C),
+                                    color: Color(0xFFCE035F),
                                     fontSize: 12.0,
                                     letterSpacing: 0.0,
-                                    fontWeight: FontWeight.normal,
+                                    fontWeight: FontWeight.w600,
                                     fontStyle: FlutterFlowTheme.of(context)
                                         .bodySmall
                                         .fontStyle,
@@ -335,16 +297,107 @@ class _HomeWidgetState extends State<HomeWidget> {
                         hoverColor: Colors.transparent,
                         highlightColor: Colors.transparent,
                         onTap: () async {
-                          context.pushNamed(ViewReportWidget.routeName);
+                          context.pushNamed(
+                            ReportIssueWidget.routeName,
+                            queryParameters: {
+                              'authuserId': serializeParam(
+                                currentUserUid,
+                                ParamType.String,
+                              ),
+                            }.withoutNulls,
+                          );
                         },
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Icon(
-                              Icons.library_books_sharp,
-                              color: Color(0xFF57636C),
-                              size: 24.0,
+                            InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
+                              onTap: () async {
+                                context.pushNamed(
+                                  ReportIssueWidget.routeName,
+                                  queryParameters: {
+                                    'authuserId': serializeParam(
+                                      currentUserUid,
+                                      ParamType.String,
+                                    ),
+                                  }.withoutNulls,
+                                );
+                              },
+                              child: Icon(
+                                Icons.rate_review_rounded,
+                                color: Color(0xFF57636C),
+                                size: 24.0,
+                              ),
+                            ),
+                            InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
+                              onTap: () async {
+                                context.pushNamed(
+                                  ReportIssueWidget.routeName,
+                                  queryParameters: {
+                                    'authuserId': serializeParam(
+                                      currentUserUid,
+                                      ParamType.String,
+                                    ),
+                                  }.withoutNulls,
+                                );
+                              },
+                              child: Text(
+                                'Report',
+                                style: FlutterFlowTheme.of(context)
+                                    .bodySmall
+                                    .override(
+                                      font: GoogleFonts.spaceGrotesk(
+                                        fontWeight: FontWeight.normal,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .bodySmall
+                                            .fontStyle,
+                                      ),
+                                      color: Color(0xFF57636C),
+                                      fontSize: 12.0,
+                                      letterSpacing: 0.0,
+                                      fontWeight: FontWeight.normal,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodySmall
+                                          .fontStyle,
+                                    ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      InkWell(
+                        splashColor: Colors.transparent,
+                        focusColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
+                        onTap: () async {
+                          context.pushNamed(ReportsWidget.routeName);
+                        },
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
+                              onTap: () async {
+                                context.pushNamed(ReportsWidget.routeName);
+                              },
+                              child: Icon(
+                                Icons.library_books_sharp,
+                                color: Color(0xFF5C6466),
+                                size: 24.0,
+                              ),
                             ),
                             Text(
                               'View here',
@@ -382,7 +435,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Icon(
-                              Icons.person_outline,
+                              Icons.person,
                               color: Color(0xFF57636C),
                               size: 24.0,
                             ),

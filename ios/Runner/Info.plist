@@ -52,7 +52,8 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 
-
+	<key>NSLocationWhenInUseUsageDescription</key>
+    <string>We want you location access for better usage</string>
 
 
 

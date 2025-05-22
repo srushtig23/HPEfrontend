@@ -101,7 +101,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget>
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        backgroundColor: Color(0xFFFCE2D3),
         body: SafeArea(
           top: true,
           child: Stack(
@@ -251,10 +251,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget>
                                                   enabledBorder:
                                                       OutlineInputBorder(
                                                     borderSide: BorderSide(
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primaryText,
+                                                      color: Color(0xFF0B0B0B),
                                                       width: 1.0,
                                                     ),
                                                     borderRadius:
@@ -274,10 +271,9 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget>
                                                   errorBorder:
                                                       OutlineInputBorder(
                                                     borderSide: BorderSide(
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .error,
+                                                      color: FlutterFlowTheme
+                                                              .of(context)
+                                                          .secondaryBackground,
                                                       width: 1.0,
                                                     ),
                                                     borderRadius:
@@ -287,10 +283,9 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget>
                                                   focusedErrorBorder:
                                                       OutlineInputBorder(
                                                     borderSide: BorderSide(
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .error,
+                                                      color: FlutterFlowTheme
+                                                              .of(context)
+                                                          .secondaryBackground,
                                                       width: 1.0,
                                                     ),
                                                     borderRadius:
@@ -298,10 +293,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget>
                                                             10.0),
                                                   ),
                                                   filled: true,
-                                                  fillColor:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .secondaryBackground,
+                                                  fillColor: Color(0xFFFEF5EB),
                                                   contentPadding:
                                                       EdgeInsetsDirectional
                                                           .fromSTEB(12.0, 17.0,
@@ -464,10 +456,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget>
                                                             8.0),
                                                   ),
                                                   filled: true,
-                                                  fillColor:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .secondaryBackground,
+                                                  fillColor: Color(0xFFFEF5EB),
                                                   contentPadding:
                                                       EdgeInsetsDirectional
                                                           .fromSTEB(12.0, 17.0,
@@ -642,10 +631,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget>
                                                             10.0),
                                                   ),
                                                   filled: true,
-                                                  fillColor:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .secondaryBackground,
+                                                  fillColor: Color(0xFFFEF5EB),
                                                   contentPadding:
                                                       EdgeInsetsDirectional
                                                           .fromSTEB(12.0, 17.0,

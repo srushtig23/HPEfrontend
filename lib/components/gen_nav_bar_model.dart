@@ -1,9 +1,8 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import '/index.dart';
-import 'failure_widget.dart' show FailureWidget;
+import 'gen_nav_bar_widget.dart' show GenNavBarWidget;
 import 'package:flutter/material.dart';
 
-class FailureModel extends FlutterFlowModel<FailureWidget> {
+class GenNavBarModel extends FlutterFlowModel<GenNavBarWidget> {
   @override
   void initState(BuildContext context) {}
 

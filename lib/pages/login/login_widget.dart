@@ -78,7 +78,7 @@ class _LoginWidgetState extends State<LoginWidget>
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: Color(0xFFFCE2D3),
+        backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
         body: SafeArea(
           top: true,
           child: Stack(
@@ -128,7 +128,7 @@ class _LoginWidgetState extends State<LoginWidget>
                                   ),
                               colors: [
                                 FlutterFlowTheme.of(context).primaryText,
-                                FlutterFlowTheme.of(context).secondary
+                                FlutterFlowTheme.of(context).primaryText
                               ],
                               gradientDirection: GradientDirection.ltr,
                               gradientType: GradientType.linear,
@@ -181,7 +181,8 @@ class _LoginWidgetState extends State<LoginWidget>
                                                         .fontStyle,
                                               ),
                                           colors: [
-                                            Color(0xFD2C010A),
+                                            FlutterFlowTheme.of(context)
+                                                .tertiary,
                                             Color(0xFF661D07)
                                           ],
                                           gradientDirection:
@@ -250,6 +251,9 @@ class _LoginWidgetState extends State<LoginWidget>
                                                             .fontWeight,
                                                     fontStyle: FontStyle.italic,
                                                   ),
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
                                                   letterSpacing: 0.0,
                                                   fontWeight:
                                                       FlutterFlowTheme.of(
@@ -298,7 +302,9 @@ class _LoginWidgetState extends State<LoginWidget>
                                                   BorderRadius.circular(8.0),
                                             ),
                                             filled: true,
-                                            fillColor: Color(0xFFFEF5EB),
+                                            fillColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .primaryBackground,
                                             contentPadding:
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     12.0, 15.0, 12.0, 15.0),
@@ -405,7 +411,7 @@ class _LoginWidgetState extends State<LoginWidget>
                                                   ),
                                                   color: FlutterFlowTheme.of(
                                                           context)
-                                                      .secondaryText,
+                                                      .primaryText,
                                                   letterSpacing: 0.0,
                                                   fontWeight:
                                                       FlutterFlowTheme.of(
@@ -416,7 +422,9 @@ class _LoginWidgetState extends State<LoginWidget>
                                                 ),
                                             enabledBorder: OutlineInputBorder(
                                               borderSide: BorderSide(
-                                                color: Color(0xFF050505),
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
                                                 width: 1.0,
                                               ),
                                               borderRadius:
@@ -452,7 +460,9 @@ class _LoginWidgetState extends State<LoginWidget>
                                                   BorderRadius.circular(10.0),
                                             ),
                                             filled: true,
-                                            fillColor: Color(0xFFFEF5EB),
+                                            fillColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .primaryBackground,
                                             contentPadding:
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     12.0, 15.0, 12.0, 15.0),
@@ -517,7 +527,7 @@ class _LoginWidgetState extends State<LoginWidget>
                                         highlightColor: Colors.transparent,
                                         onTap: () async {
                                           context.pushNamed(
-                                            SuccessWidget.routeName,
+                                            ForgotPasswordWidget.routeName,
                                             extra: <String, dynamic>{
                                               kTransitionInfoKey:
                                                   TransitionInfo(
@@ -606,7 +616,7 @@ class _LoginWidgetState extends State<LoginWidget>
                                             iconPadding:
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 0.0, 0.0),
-                                            color: Color(0xFF091057),
+                                            color: Color(0xFF243BA6),
                                             textStyle: FlutterFlowTheme.of(
                                                     context)
                                                 .titleSmall
@@ -694,6 +704,25 @@ class _LoginWidgetState extends State<LoginWidget>
                                           context.pushNamedAuth(
                                               HomeWidget.routeName,
                                               context.mounted);
+
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(
+                                            SnackBar(
+                                              content: Text(
+                                                'Welcome to her safety',
+                                                style: TextStyle(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                ),
+                                              ),
+                                              duration:
+                                                  Duration(milliseconds: 4000),
+                                              backgroundColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondary,
+                                            ),
+                                          );
                                         },
                                         text: 'Continue with Google',
                                         icon: FaIcon(
@@ -708,7 +737,7 @@ class _LoginWidgetState extends State<LoginWidget>
                                               EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 0.0),
                                           color: FlutterFlowTheme.of(context)
-                                              .secondaryBackground,
+                                              .primaryBackground,
                                           textStyle: FlutterFlowTheme.of(
                                                   context)
                                               .titleSmall
@@ -845,6 +874,68 @@ class _LoginWidgetState extends State<LoginWidget>
                                         ),
                                       ),
                                     ),
+                                    Opacity(
+                                      opacity: 0.5,
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 16.0, 0.0, 0.0),
+                                        child: InkWell(
+                                          splashColor: Colors.transparent,
+                                          focusColor: Colors.transparent,
+                                          hoverColor: Colors.transparent,
+                                          highlightColor: Colors.transparent,
+                                          onTap: () async {
+                                            context.pushNamed(
+                                              HomeWidget.routeName,
+                                              extra: <String, dynamic>{
+                                                kTransitionInfoKey:
+                                                    TransitionInfo(
+                                                  hasTransition: true,
+                                                  transitionType:
+                                                      PageTransitionType
+                                                          .rightToLeft,
+                                                ),
+                                              },
+                                            );
+                                          },
+                                          child: Text(
+                                            'Continue as a guest',
+                                            style: FlutterFlowTheme.of(context)
+                                                .titleMedium
+                                                .override(
+                                                  font: GoogleFonts.interTight(
+                                                    fontWeight:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .titleMedium
+                                                            .fontWeight,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .titleMedium
+                                                            .fontStyle,
+                                                  ),
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
+                                                  letterSpacing: 0.0,
+                                                  fontWeight:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .titleMedium
+                                                          .fontWeight,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .titleMedium
+                                                          .fontStyle,
+                                                  decoration:
+                                                      TextDecoration.underline,
+                                                ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
                                   ],
                                 ),
                               ),
@@ -860,32 +951,42 @@ class _LoginWidgetState extends State<LoginWidget>
                               alignment: AlignmentDirectional(0.0, 1.0),
                               child: Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 30.0, 0.0, 0.0),
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(8.0),
-                                  child: Image.asset(
-                                    'assets/images/1safe.png',
-                                    width: 80.0,
-                                    height: 80.0,
-                                    fit: BoxFit.scaleDown,
-                                  ),
+                                    0.0, 80.0, 0.0, 0.0),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    if (responsiveVisibility(
+                                      context: context,
+                                      tablet: false,
+                                      tabletLandscape: false,
+                                      desktop: false,
+                                    ))
+                                      ClipRRect(
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                        child: Image.asset(
+                                          'assets/images/A_group_of_Multiethnic_women_illustration___Premium_AI-generated_image.png',
+                                          width: 142.0,
+                                          height: 132.47,
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          90.0, 0.0, 0.0, 0.0),
+                                      child: ClipRRect(
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                        child: Image.asset(
+                                          'assets/images/1safe.png',
+                                          width: 117.67,
+                                          height: 136.6,
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                              ),
-                            ),
-                          if (responsiveVisibility(
-                            context: context,
-                            tablet: false,
-                            tabletLandscape: false,
-                            desktop: false,
-                          ))
-                            ClipRRect(
-                              borderRadius: BorderRadius.circular(8.0),
-                              child: Image.asset(
-                                'assets/images/A_group_of_Multiethnic_women_illustration___Premium_AI-generated_image.png',
-                                width: 100.0,
-                                height: 100.0,
-                                fit: BoxFit.cover,
-                                alignment: Alignment(0.0, 1.0),
                               ),
                             ),
                         ],
@@ -899,7 +1000,7 @@ class _LoginWidgetState extends State<LoginWidget>
                 phone: false,
               ))
                 Align(
-                  alignment: AlignmentDirectional(-1.17, 1.05),
+                  alignment: AlignmentDirectional(-1.09, 0.98),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(8.0),
                     child: Image.asset(
@@ -915,7 +1016,7 @@ class _LoginWidgetState extends State<LoginWidget>
                 phone: false,
               ))
                 Align(
-                  alignment: AlignmentDirectional(0.94, 1.08),
+                  alignment: AlignmentDirectional(1.06, 1.1),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(8.0),
                     child: Image.asset(

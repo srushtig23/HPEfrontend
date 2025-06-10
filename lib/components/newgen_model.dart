@@ -1,9 +1,8 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import 'testingreportpage_copy_widget.dart' show TestingreportpageCopyWidget;
+import 'newgen_widget.dart' show NewgenWidget;
 import 'package:flutter/material.dart';
 
-class TestingreportpageCopyModel
-    extends FlutterFlowModel<TestingreportpageCopyWidget> {
+class NewgenModel extends FlutterFlowModel<NewgenWidget> {
   @override
   void initState(BuildContext context) {}
 

@@ -100,6 +100,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: ReportIssueWidget.routeName,
           path: ReportIssueWidget.routePath,
+          requireAuth: true,
           builder: (context, params) => ReportIssueWidget(
             authuserId: params.getParam(
               'authuserId',
@@ -113,13 +114,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => ForgotPasswordWidget(),
         ),
         FFRoute(
-          name: RequestToPasswordChangeWidget.routeName,
-          path: RequestToPasswordChangeWidget.routePath,
-          builder: (context, params) => RequestToPasswordChangeWidget(),
-        ),
-        FFRoute(
           name: ProfileWidget.routeName,
           path: ProfileWidget.routePath,
+          requireAuth: true,
           builder: (context, params) => ProfileWidget(
             passeduserid: params.getParam(
               'passeduserid',
@@ -128,19 +125,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: SuccessWidget.routeName,
-          path: SuccessWidget.routePath,
-          builder: (context, params) => SuccessWidget(),
-        ),
-        FFRoute(
           name: FailureWidget.routeName,
           path: FailureWidget.routePath,
           builder: (context, params) => FailureWidget(),
-        ),
-        FFRoute(
-          name: TestingreportpageCopyWidget.routeName,
-          path: TestingreportpageCopyWidget.routePath,
-          builder: (context, params) => TestingreportpageCopyWidget(),
         ),
         FFRoute(
           name: ReportsWidget.routeName,
@@ -151,6 +138,17 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: HomeWidget.routeName,
           path: HomeWidget.routePath,
           builder: (context, params) => HomeWidget(),
+        ),
+        FFRoute(
+          name: ResetPasswordWidget.routeName,
+          path: ResetPasswordWidget.routePath,
+          builder: (context, params) => ResetPasswordWidget(),
+        ),
+        FFRoute(
+          name: GenprofileWidget.routeName,
+          path: GenprofileWidget.routePath,
+          requireAuth: true,
+          builder: (context, params) => GenprofileWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

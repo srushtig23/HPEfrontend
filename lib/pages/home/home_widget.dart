@@ -1,11 +1,16 @@
 import '/auth/supabase_auth/auth_util.dart';
+import '/flutter_flow/flutter_flow_expanded_image_view.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_web_view.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/index.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'home_model.dart';
 export 'home_model.dart';
 
@@ -29,9 +34,6 @@ class _HomeWidgetState extends State<HomeWidget> {
     super.initState();
     _model = createModel(context, () => HomeModel());
 
-    _model.textController ??= TextEditingController();
-    _model.textFieldFocusNode ??= FocusNode();
-
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
@@ -51,207 +53,57 @@ class _HomeWidgetState extends State<HomeWidget> {
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: Color(0xFFF1F4F8),
-        appBar: AppBar(
-          backgroundColor: Color(0xFFCE035F),
-          automaticallyImplyLeading: false,
-          leading: FlutterFlowIconButton(
-            borderRadius: 20.0,
-            buttonSize: 40.0,
-            icon: Icon(
-              Icons.menu,
-              color: Colors.white,
-              size: 24.0,
-            ),
-            onPressed: () {
-              print('IconButton pressed ...');
-            },
-          ),
-          title: Text(
-            'Welcome ',
-            style: FlutterFlowTheme.of(context).titleLarge.override(
-                  font: GoogleFonts.plusJakartaSans(
-                    fontWeight: FontWeight.w600,
-                    fontStyle:
-                        FlutterFlowTheme.of(context).titleLarge.fontStyle,
-                  ),
-                  color: Colors.white,
-                  fontSize: 22.0,
-                  letterSpacing: 0.0,
-                  fontWeight: FontWeight.w600,
-                  fontStyle: FlutterFlowTheme.of(context).titleLarge.fontStyle,
-                ),
-          ),
-          actions: [
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
-              child: FlutterFlowIconButton(
-                borderRadius: 20.0,
-                buttonSize: 40.0,
-                icon: Icon(
-                  Icons.notifications_none,
-                  color: Colors.white,
-                  size: 24.0,
-                ),
-                onPressed: () {
-                  print('IconButton pressed ...');
-                },
+        backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
+        floatingActionButton: Align(
+          alignment: AlignmentDirectional(-0.85, -0.4),
+          child: WebViewAware(
+            child: FloatingActionButton(
+              onPressed: () async {
+                await launchUrl(Uri(
+                  scheme: 'tel',
+                  path: '0821-2418339',
+                ));
+              },
+              backgroundColor: Color(0xFD8D0808),
+              elevation: 8.0,
+              child: Icon(
+                Icons.sos_rounded,
+                color: FlutterFlowTheme.of(context).info,
+                size: 24.0,
               ),
             ),
-          ],
-          centerTitle: true,
-          elevation: 2.0,
+          ),
         ),
-        body: SafeArea(
-          top: true,
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 0.0),
-                child: Container(
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    boxShadow: [
-                      BoxShadow(
-                        blurRadius: 4.0,
-                        color: Color(0x33000000),
-                        offset: Offset(
-                          0.0,
-                          2.0,
-                        ),
-                      )
-                    ],
-                    borderRadius: BorderRadius.circular(8.0),
-                  ),
-                  child: Container(
-                    width: double.infinity,
-                    child: TextFormField(
-                      controller: _model.textController,
-                      focusNode: _model.textFieldFocusNode,
-                      autofocus: false,
-                      obscureText: false,
-                      decoration: InputDecoration(
-                        hintText: 'Search for a location...',
-                        hintStyle:
-                            FlutterFlowTheme.of(context).bodyMedium.override(
-                                  font: GoogleFonts.spaceGrotesk(
-                                    fontWeight: FontWeight.normal,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .fontStyle,
-                                  ),
-                                  color: Color(0xFF14181B),
-                                  fontSize: 14.0,
-                                  letterSpacing: 0.0,
-                                  fontWeight: FontWeight.normal,
-                                  fontStyle: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .fontStyle,
-                                ),
-                        enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Color(0xFFDBE2E7),
-                            width: 1.0,
-                          ),
-                          borderRadius: BorderRadius.circular(8.0),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Color(0xFFCE035F),
-                            width: 1.0,
-                          ),
-                          borderRadius: BorderRadius.circular(8.0),
-                        ),
-                        errorBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Color(0xFFE65454),
-                            width: 1.0,
-                          ),
-                          borderRadius: BorderRadius.circular(8.0),
-                        ),
-                        focusedErrorBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Color(0xFFE65454),
-                            width: 1.0,
-                          ),
-                          borderRadius: BorderRadius.circular(8.0),
-                        ),
-                        filled: true,
-                        fillColor: Colors.white,
-                        prefixIcon: Icon(
-                          Icons.search_rounded,
-                          color: Color(0xFF57636C),
-                          size: 24.0,
-                        ),
-                        suffixIcon: Icon(
-                          Icons.clear,
-                          color: Color(0xFF57636C),
-                          size: 24.0,
-                        ),
+        drawer: Drawer(
+          elevation: 16.0,
+          child: WebViewAware(
+            child: Stack(
+              children: [
+                Column(
+                  mainAxisSize: MainAxisSize.max,
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    FlutterFlowIconButton(
+                      borderRadius: 8.0,
+                      buttonSize: 40.0,
+                      fillColor: FlutterFlowTheme.of(context).primaryBackground,
+                      hoverColor: Color(0xFF656F77),
+                      icon: Icon(
+                        Icons.close_rounded,
+                        color: FlutterFlowTheme.of(context).primaryText,
+                        size: 30.0,
                       ),
-                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            font: GoogleFonts.spaceGrotesk(
-                              fontWeight: FontWeight.normal,
-                              fontStyle: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .fontStyle,
-                            ),
-                            color: Color(0xFF14181B),
-                            fontSize: 14.0,
-                            letterSpacing: 0.0,
-                            fontWeight: FontWeight.normal,
-                            fontStyle: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .fontStyle,
-                          ),
-                      cursorColor: Color(0xFF14181B),
-                      validator:
-                          _model.textControllerValidator.asValidator(context),
+                      onPressed: () async {
+                        if (scaffoldKey.currentState!.isDrawerOpen ||
+                            scaffoldKey.currentState!.isEndDrawerOpen) {
+                          Navigator.pop(context);
+                        }
+                      },
                     ),
-                  ),
-                ),
-              ),
-              Expanded(
-                child: Container(
-                  width: double.infinity,
-                  height: MediaQuery.sizeOf(context).height * 1.0,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(0.0),
-                  ),
-                  child: FlutterFlowWebView(
-                    content: 'https://hpe-maps.onrender.com',
-                    height: 1000.0,
-                    verticalScroll: true,
-                    horizontalScroll: true,
-                  ),
-                ),
-              ),
-              Container(
-                width: double.infinity,
-                height: 70.0,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  boxShadow: [
-                    BoxShadow(
-                      blurRadius: 4.0,
-                      color: Color(0x33000000),
-                      offset: Offset(
-                        0.0,
-                        -2.0,
-                      ),
-                    )
-                  ],
-                ),
-                child: Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      InkWell(
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                      child: InkWell(
                         splashColor: Colors.transparent,
                         focusColor: Colors.transparent,
                         hoverColor: Colors.transparent,
@@ -259,39 +111,62 @@ class _HomeWidgetState extends State<HomeWidget> {
                         onTap: () async {
                           context.pushNamed(HomeWidget.routeName);
                         },
-                        child: Column(
+                        child: Row(
                           mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Icon(
-                              Icons.home,
-                              color: Color(0xFFCE035F),
-                              size: 24.0,
-                            ),
-                            Text(
-                              'Home',
-                              style: FlutterFlowTheme.of(context)
-                                  .bodySmall
-                                  .override(
-                                    font: GoogleFonts.spaceGrotesk(
-                                      fontWeight: FontWeight.w600,
+                            FFButtonWidget(
+                              onPressed: () async {
+                                context.pushNamed(HomeWidget.routeName);
+                              },
+                              text: 'Home',
+                              icon: Icon(
+                                Icons.home,
+                                size: 24.0,
+                              ),
+                              options: FFButtonOptions(
+                                width: 300.0,
+                                height: 49.9,
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 150.0, 0.0),
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 0.0),
+                                color: FlutterFlowTheme.of(context)
+                                    .primaryBackground,
+                                textStyle: FlutterFlowTheme.of(context)
+                                    .titleSmall
+                                    .override(
+                                      font: GoogleFonts.interTight(
+                                        fontWeight: FlutterFlowTheme.of(context)
+                                            .titleSmall
+                                            .fontWeight,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .titleSmall
+                                            .fontStyle,
+                                      ),
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                      fontSize: 20.0,
+                                      letterSpacing: 0.0,
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .fontWeight,
                                       fontStyle: FlutterFlowTheme.of(context)
-                                          .bodySmall
+                                          .titleSmall
                                           .fontStyle,
                                     ),
-                                    color: Color(0xFFCE035F),
-                                    fontSize: 12.0,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.w600,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .bodySmall
-                                        .fontStyle,
-                                  ),
+                                elevation: 0.0,
+                                borderRadius: BorderRadius.circular(24.0),
+                                hoverColor: Color(0xFF656F77),
+                              ),
                             ),
                           ],
                         ),
                       ),
-                      InkWell(
+                    ),
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                      child: InkWell(
                         splashColor: Colors.transparent,
                         focusColor: Colors.transparent,
                         hoverColor: Colors.transparent,
@@ -301,22 +176,17 @@ class _HomeWidgetState extends State<HomeWidget> {
                             ReportIssueWidget.routeName,
                             queryParameters: {
                               'authuserId': serializeParam(
-                                currentUserUid,
+                                '',
                                 ParamType.String,
                               ),
                             }.withoutNulls,
                           );
                         },
-                        child: Column(
+                        child: Row(
                           mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            InkWell(
-                              splashColor: Colors.transparent,
-                              focusColor: Colors.transparent,
-                              hoverColor: Colors.transparent,
-                              highlightColor: Colors.transparent,
-                              onTap: () async {
+                            FFButtonWidget(
+                              onPressed: () async {
                                 context.pushNamed(
                                   ReportIssueWidget.routeName,
                                   queryParameters: {
@@ -327,53 +197,55 @@ class _HomeWidgetState extends State<HomeWidget> {
                                   }.withoutNulls,
                                 );
                               },
-                              child: Icon(
-                                Icons.rate_review_rounded,
-                                color: Color(0xFF57636C),
+                              text: 'Report',
+                              icon: Icon(
+                                Icons.rate_review,
                                 size: 24.0,
                               ),
-                            ),
-                            InkWell(
-                              splashColor: Colors.transparent,
-                              focusColor: Colors.transparent,
-                              hoverColor: Colors.transparent,
-                              highlightColor: Colors.transparent,
-                              onTap: () async {
-                                context.pushNamed(
-                                  ReportIssueWidget.routeName,
-                                  queryParameters: {
-                                    'authuserId': serializeParam(
-                                      currentUserUid,
-                                      ParamType.String,
-                                    ),
-                                  }.withoutNulls,
-                                );
-                              },
-                              child: Text(
-                                'Report',
-                                style: FlutterFlowTheme.of(context)
-                                    .bodySmall
+                              options: FFButtonOptions(
+                                width: 300.0,
+                                height: 49.9,
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 150.0, 0.0),
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 0.0),
+                                color: FlutterFlowTheme.of(context)
+                                    .primaryBackground,
+                                textStyle: FlutterFlowTheme.of(context)
+                                    .titleSmall
                                     .override(
-                                      font: GoogleFonts.spaceGrotesk(
-                                        fontWeight: FontWeight.normal,
+                                      font: GoogleFonts.interTight(
+                                        fontWeight: FlutterFlowTheme.of(context)
+                                            .titleSmall
+                                            .fontWeight,
                                         fontStyle: FlutterFlowTheme.of(context)
-                                            .bodySmall
+                                            .titleSmall
                                             .fontStyle,
                                       ),
-                                      color: Color(0xFF57636C),
-                                      fontSize: 12.0,
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                      fontSize: 20.0,
                                       letterSpacing: 0.0,
-                                      fontWeight: FontWeight.normal,
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .fontWeight,
                                       fontStyle: FlutterFlowTheme.of(context)
-                                          .bodySmall
+                                          .titleSmall
                                           .fontStyle,
                                     ),
+                                elevation: 0.0,
+                                borderRadius: BorderRadius.circular(24.0),
+                                hoverColor: Color(0xFF656F77),
                               ),
                             ),
                           ],
                         ),
                       ),
-                      InkWell(
+                    ),
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                      child: InkWell(
                         splashColor: Colors.transparent,
                         focusColor: Colors.transparent,
                         hoverColor: Colors.transparent,
@@ -381,92 +253,881 @@ class _HomeWidgetState extends State<HomeWidget> {
                         onTap: () async {
                           context.pushNamed(ReportsWidget.routeName);
                         },
-                        child: Column(
+                        child: Row(
                           mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            InkWell(
-                              splashColor: Colors.transparent,
-                              focusColor: Colors.transparent,
-                              hoverColor: Colors.transparent,
-                              highlightColor: Colors.transparent,
-                              onTap: () async {
+                            FFButtonWidget(
+                              onPressed: () async {
                                 context.pushNamed(ReportsWidget.routeName);
                               },
-                              child: Icon(
-                                Icons.library_books_sharp,
-                                color: Color(0xFF5C6466),
+                              text: 'View Report',
+                              icon: Icon(
+                                Icons.library_books,
                                 size: 24.0,
                               ),
-                            ),
-                            Text(
-                              'View here',
-                              style: FlutterFlowTheme.of(context)
-                                  .bodySmall
-                                  .override(
-                                    font: GoogleFonts.spaceGrotesk(
-                                      fontWeight: FontWeight.normal,
+                              options: FFButtonOptions(
+                                width: 299.97,
+                                height: 49.9,
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 120.0, 0.0),
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                    15.0, 0.0, 0.0, 0.0),
+                                color: FlutterFlowTheme.of(context)
+                                    .primaryBackground,
+                                textStyle: FlutterFlowTheme.of(context)
+                                    .titleSmall
+                                    .override(
+                                      font: GoogleFonts.interTight(
+                                        fontWeight: FlutterFlowTheme.of(context)
+                                            .titleSmall
+                                            .fontWeight,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .titleSmall
+                                            .fontStyle,
+                                      ),
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                      fontSize: 20.0,
+                                      letterSpacing: 0.0,
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .fontWeight,
                                       fontStyle: FlutterFlowTheme.of(context)
-                                          .bodySmall
+                                          .titleSmall
                                           .fontStyle,
                                     ),
-                                    color: Color(0xFF57636C),
-                                    fontSize: 12.0,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.normal,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .bodySmall
-                                        .fontStyle,
-                                  ),
+                                elevation: 0.0,
+                                borderRadius: BorderRadius.circular(24.0),
+                                hoverColor: Color(0xFF656F77),
+                              ),
                             ),
                           ],
                         ),
                       ),
-                      InkWell(
+                    ),
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                      child: InkWell(
                         splashColor: Colors.transparent,
                         focusColor: Colors.transparent,
                         hoverColor: Colors.transparent,
                         highlightColor: Colors.transparent,
                         onTap: () async {
-                          context.pushNamed(ProfileWidget.routeName);
+                          context.pushNamed(
+                            ProfileWidget.routeName,
+                            queryParameters: {
+                              'passeduserid': serializeParam(
+                                '',
+                                ParamType.String,
+                              ),
+                            }.withoutNulls,
+                          );
                         },
-                        child: Column(
+                        child: Row(
                           mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Icon(
-                              Icons.person,
-                              color: Color(0xFF57636C),
-                              size: 24.0,
-                            ),
-                            Text(
-                              'Profile',
-                              style: FlutterFlowTheme.of(context)
-                                  .bodySmall
-                                  .override(
-                                    font: GoogleFonts.spaceGrotesk(
-                                      fontWeight: FontWeight.normal,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .bodySmall
-                                          .fontStyle,
-                                    ),
-                                    color: Color(0xFF57636C),
-                                    fontSize: 12.0,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.normal,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .bodySmall
-                                        .fontStyle,
-                                  ),
+                            Align(
+                              alignment: AlignmentDirectional(-1.0, 0.0),
+                              child: FFButtonWidget(
+                                onPressed: () async {
+                                  context.pushNamed(
+                                    ProfileWidget.routeName,
+                                    queryParameters: {
+                                      'passeduserid': serializeParam(
+                                        '',
+                                        ParamType.String,
+                                      ),
+                                    }.withoutNulls,
+                                  );
+                                },
+                                text: 'Profile',
+                                icon: Icon(
+                                  Icons.person,
+                                  size: 24.0,
+                                ),
+                                options: FFButtonOptions(
+                                  width: 300.0,
+                                  height: 49.9,
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 150.0, 0.0),
+                                  iconAlignment: IconAlignment.start,
+                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 0.0),
+                                  color: FlutterFlowTheme.of(context)
+                                      .primaryBackground,
+                                  textStyle: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .override(
+                                        font: GoogleFonts.interTight(
+                                          fontWeight:
+                                              FlutterFlowTheme.of(context)
+                                                  .titleSmall
+                                                  .fontWeight,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .titleSmall
+                                                  .fontStyle,
+                                        ),
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                        fontSize: 20.0,
+                                        letterSpacing: 0.0,
+                                        fontWeight: FlutterFlowTheme.of(context)
+                                            .titleSmall
+                                            .fontWeight,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .titleSmall
+                                            .fontStyle,
+                                      ),
+                                  elevation: 0.0,
+                                  borderRadius: BorderRadius.circular(24.0),
+                                  hoverColor: Color(0xFF656F77),
+                                ),
+                              ),
                             ),
                           ],
                         ),
                       ),
-                    ],
+                    ),
+                  ],
+                ),
+                Align(
+                  alignment: AlignmentDirectional(0.0, 1.0),
+                  child: Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 50.0),
+                    child: FFButtonWidget(
+                      onPressed: () async {
+                        GoRouter.of(context).prepareAuthEvent();
+                        await authManager.signOut();
+                        GoRouter.of(context).clearRedirectLocation();
+
+                        context.goNamedAuth(
+                            LoginWidget.routeName, context.mounted);
+                      },
+                      text: 'Log Out',
+                      options: FFButtonOptions(
+                        height: 40.0,
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            16.0, 0.0, 16.0, 0.0),
+                        iconPadding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        color: Color(0xFF003153),
+                        textStyle:
+                            FlutterFlowTheme.of(context).titleSmall.override(
+                                  font: GoogleFonts.interTight(
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .fontStyle,
+                                  ),
+                                  color: Colors.white,
+                                  letterSpacing: 0.0,
+                                  fontWeight: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .fontWeight,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .fontStyle,
+                                ),
+                        elevation: 0.0,
+                        borderRadius: BorderRadius.circular(8.0),
+                        hoverColor: Color(0xFF890440),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+        body: NestedScrollView(
+          floatHeaderSlivers: true,
+          headerSliverBuilder: (context, _) => [
+            SliverAppBar(
+              pinned: true,
+              floating: true,
+              snap: true,
+              backgroundColor: Color(0xFF003153),
+              automaticallyImplyLeading: false,
+              leading: Align(
+                alignment: AlignmentDirectional(-1.0, -1.0),
+                child: FlutterFlowIconButton(
+                  borderRadius: 20.0,
+                  buttonSize: 40.0,
+                  icon: Icon(
+                    Icons.menu,
+                    color: Colors.white,
+                    size: 30.0,
+                  ),
+                  onPressed: () async {
+                    scaffoldKey.currentState!.openDrawer();
+                  },
+                ),
+              ),
+              title: Align(
+                alignment: AlignmentDirectional(0.0, -1.0),
+                child: InkWell(
+                  splashColor: Colors.transparent,
+                  focusColor: Colors.transparent,
+                  hoverColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
+                  onTap: () async {
+                    await Navigator.push(
+                      context,
+                      PageTransition(
+                        type: PageTransitionType.fade,
+                        child: FlutterFlowExpandedImageView(
+                          image: Image.asset(
+                            'assets/images/herr1.png',
+                            fit: BoxFit.contain,
+                            alignment: Alignment(0.0, -1.0),
+                          ),
+                          allowRotation: false,
+                          tag: 'imageTag',
+                          useHeroAnimation: true,
+                        ),
+                      ),
+                    );
+                  },
+                  child: Hero(
+                    tag: 'imageTag',
+                    transitionOnUserGestures: true,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(8.0),
+                      child: Image.asset(
+                        'assets/images/herr1.png',
+                        width: 163.2,
+                        height: 50.2,
+                        fit: BoxFit.contain,
+                        alignment: Alignment(0.0, -1.0),
+                      ),
+                    ),
                   ),
                 ),
               ),
-            ],
+              actions: [
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                  child: FlutterFlowIconButton(
+                    borderRadius: 20.0,
+                    buttonSize: 40.0,
+                    icon: Icon(
+                      Icons.notifications_none,
+                      color: Colors.white,
+                      size: 24.0,
+                    ),
+                    onPressed: () {
+                      print('latestnews pressed ...');
+                    },
+                  ),
+                ),
+                Align(
+                  alignment: AlignmentDirectional(1.0, 0.0),
+                  child: Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
+                    child: FlutterFlowIconButton(
+                      borderRadius: 8.0,
+                      buttonSize: 40.0,
+                      fillColor: FlutterFlowTheme.of(context).primaryBackground,
+                      hoverColor:
+                          FlutterFlowTheme.of(context).primaryBackground,
+                      icon: Icon(
+                        Icons.person,
+                        color: FlutterFlowTheme.of(context).secondaryText,
+                        size: 24.0,
+                      ),
+                      onPressed: () async {
+                        context.pushNamed(
+                          ProfileWidget.routeName,
+                          queryParameters: {
+                            'passeduserid': serializeParam(
+                              '',
+                              ParamType.String,
+                            ),
+                          }.withoutNulls,
+                          extra: <String, dynamic>{
+                            kTransitionInfoKey: TransitionInfo(
+                              hasTransition: true,
+                              transitionType: PageTransitionType.rightToLeft,
+                            ),
+                          },
+                        );
+                      },
+                    ),
+                  ),
+                ),
+              ],
+              centerTitle: true,
+              elevation: 8.0,
+            )
+          ],
+          body: Builder(
+            builder: (context) {
+              return SafeArea(
+                top: false,
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    if (responsiveVisibility(
+                      context: context,
+                      phone: false,
+                    ))
+                      Stack(
+                        children: [
+                          if (responsiveVisibility(
+                            context: context,
+                            phone: false,
+                          ))
+                            Container(
+                              width: 1445.6,
+                              height: 34.4,
+                              decoration: BoxDecoration(
+                                color: Color(0xFF003153),
+                                boxShadow: [
+                                  BoxShadow(
+                                    blurRadius: 0.0,
+                                    color: Color(0x33000000),
+                                    offset: Offset(
+                                      0.0,
+                                      2.0,
+                                    ),
+                                  )
+                                ],
+                                shape: BoxShape.rectangle,
+                              ),
+                              child: Visibility(
+                                visible: responsiveVisibility(
+                                  context: context,
+                                  phone: false,
+                                ),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  crossAxisAlignment: CrossAxisAlignment.end,
+                                  children: [
+                                    Flexible(
+                                      child: FFButtonWidget(
+                                        onPressed: () async {
+                                          context.pushNamed(
+                                            HomeWidget.routeName,
+                                            extra: <String, dynamic>{
+                                              kTransitionInfoKey:
+                                                  TransitionInfo(
+                                                hasTransition: true,
+                                                transitionType:
+                                                    PageTransitionType.fade,
+                                                duration:
+                                                    Duration(milliseconds: 0),
+                                              ),
+                                            },
+                                          );
+                                        },
+                                        text: 'Home',
+                                        options: FFButtonOptions(
+                                          width: 100.0,
+                                          height: 57.8,
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  16.0, 0.0, 16.0, 0.0),
+                                          iconPadding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 0.0, 0.0),
+                                          color: Color(0xFFFC8019),
+                                          textStyle: FlutterFlowTheme.of(
+                                                  context)
+                                              .titleSmall
+                                              .override(
+                                                font: GoogleFonts.interTight(
+                                                  fontWeight: FontWeight.bold,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .titleSmall
+                                                          .fontStyle,
+                                                ),
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryBackground,
+                                                letterSpacing: 0.0,
+                                                fontWeight: FontWeight.bold,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleSmall
+                                                        .fontStyle,
+                                              ),
+                                          elevation: 0.0,
+                                          borderRadius: BorderRadius.only(
+                                            bottomLeft: Radius.circular(0.0),
+                                            bottomRight: Radius.circular(0.0),
+                                            topLeft: Radius.circular(0.0),
+                                            topRight: Radius.circular(0.0),
+                                          ),
+                                          hoverColor: Color(0x4D0CD1BA),
+                                          hoverTextColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .alternate,
+                                        ),
+                                      ),
+                                    ),
+                                    Flexible(
+                                      child: FFButtonWidget(
+                                        onPressed: () async {
+                                          context.pushNamed(
+                                            ReportsWidget.routeName,
+                                            extra: <String, dynamic>{
+                                              kTransitionInfoKey:
+                                                  TransitionInfo(
+                                                hasTransition: true,
+                                                transitionType:
+                                                    PageTransitionType.fade,
+                                                duration:
+                                                    Duration(milliseconds: 0),
+                                              ),
+                                            },
+                                          );
+                                        },
+                                        text: 'Feeds',
+                                        options: FFButtonOptions(
+                                          width: 100.0,
+                                          height: 57.8,
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  16.0, 0.0, 16.0, 0.0),
+                                          iconPadding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 0.0, 0.0),
+                                          color: Color(0xFF003153),
+                                          textStyle: FlutterFlowTheme.of(
+                                                  context)
+                                              .titleSmall
+                                              .override(
+                                                font: GoogleFonts.interTight(
+                                                  fontWeight: FontWeight.bold,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .titleSmall
+                                                          .fontStyle,
+                                                ),
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .info,
+                                                letterSpacing: 0.0,
+                                                fontWeight: FontWeight.bold,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleSmall
+                                                        .fontStyle,
+                                              ),
+                                          elevation: 0.0,
+                                          borderRadius: BorderRadius.only(
+                                            bottomLeft: Radius.circular(0.0),
+                                            bottomRight: Radius.circular(0.0),
+                                            topLeft: Radius.circular(0.0),
+                                            topRight: Radius.circular(0.0),
+                                          ),
+                                          hoverColor: Color(0x4D0CD1BA),
+                                          hoverTextColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .alternate,
+                                        ),
+                                      ),
+                                    ),
+                                    Flexible(
+                                      child: FFButtonWidget(
+                                        onPressed: () async {
+                                          context.pushNamed(
+                                            ReportIssueWidget.routeName,
+                                            queryParameters: {
+                                              'authuserId': serializeParam(
+                                                '',
+                                                ParamType.String,
+                                              ),
+                                            }.withoutNulls,
+                                            extra: <String, dynamic>{
+                                              kTransitionInfoKey:
+                                                  TransitionInfo(
+                                                hasTransition: true,
+                                                transitionType:
+                                                    PageTransitionType.fade,
+                                                duration:
+                                                    Duration(milliseconds: 0),
+                                              ),
+                                            },
+                                          );
+                                        },
+                                        text: 'Report',
+                                        options: FFButtonOptions(
+                                          width: 100.0,
+                                          height: 52.8,
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  16.0, 0.0, 16.0, 0.0),
+                                          iconPadding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 0.0, 0.0),
+                                          color: Color(0xFF003153),
+                                          textStyle: FlutterFlowTheme.of(
+                                                  context)
+                                              .titleSmall
+                                              .override(
+                                                font: GoogleFonts.interTight(
+                                                  fontWeight:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .titleSmall
+                                                          .fontWeight,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .titleSmall
+                                                          .fontStyle,
+                                                ),
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .info,
+                                                letterSpacing: 0.0,
+                                                fontWeight:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleSmall
+                                                        .fontWeight,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleSmall
+                                                        .fontStyle,
+                                              ),
+                                          elevation: 0.0,
+                                          borderRadius: BorderRadius.only(
+                                            bottomLeft: Radius.circular(0.0),
+                                            bottomRight: Radius.circular(0.0),
+                                            topLeft: Radius.circular(0.0),
+                                            topRight: Radius.circular(0.0),
+                                          ),
+                                          hoverColor: Color(0x4D0CD1BA),
+                                          hoverTextColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .alternate,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                        ],
+                      ),
+                    Expanded(
+                      child: Stack(
+                        children: [
+                          FlutterFlowWebView(
+                            content: 'https://hpe-map.vercel.app/\n',
+                            bypass: false,
+                            height: 870.0,
+                            verticalScroll: true,
+                            horizontalScroll: true,
+                          ),
+                          if (responsiveVisibility(
+                            context: context,
+                            tablet: false,
+                            tabletLandscape: false,
+                            desktop: false,
+                          ))
+                            Align(
+                              alignment: AlignmentDirectional(0.0, 1.02),
+                              child: Container(
+                                width: 407.3,
+                                height: 73.18,
+                                decoration: BoxDecoration(
+                                  color: Color(0xFFEDF6F8),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      blurRadius: 20.0,
+                                      color: Color(0x33000000),
+                                      offset: Offset(
+                                        0.0,
+                                        2.0,
+                                      ),
+                                    )
+                                  ],
+                                ),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
+                                  children: [
+                                    InkWell(
+                                      splashColor: Colors.transparent,
+                                      focusColor: Colors.transparent,
+                                      hoverColor: Colors.transparent,
+                                      highlightColor: Colors.transparent,
+                                      onTap: () async {
+                                        context.pushNamed(
+                                          HomeWidget.routeName,
+                                          extra: <String, dynamic>{
+                                            kTransitionInfoKey: TransitionInfo(
+                                              hasTransition: true,
+                                              transitionType: PageTransitionType
+                                                  .rightToLeft,
+                                            ),
+                                          },
+                                        );
+                                      },
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Icon(
+                                            Icons.home,
+                                            color: Color(0xFFFC8019),
+                                            size: 22.0,
+                                          ),
+                                          Text(
+                                            'Home',
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  font: GoogleFonts.inter(
+                                                    fontWeight: FontWeight.w600,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMedium
+                                                            .fontStyle,
+                                                  ),
+                                                  color: Color(0xFFFC8019),
+                                                  fontSize: 12.0,
+                                                  letterSpacing: 0.0,
+                                                  fontWeight: FontWeight.w600,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .fontStyle,
+                                                ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    InkWell(
+                                      splashColor: Colors.transparent,
+                                      focusColor: Colors.transparent,
+                                      hoverColor: Colors.transparent,
+                                      highlightColor: Colors.transparent,
+                                      onTap: () async {
+                                        context.pushNamed(
+                                          HomeWidget.routeName,
+                                          extra: <String, dynamic>{
+                                            kTransitionInfoKey: TransitionInfo(
+                                              hasTransition: true,
+                                              transitionType: PageTransitionType
+                                                  .rightToLeft,
+                                            ),
+                                          },
+                                        );
+                                      },
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          InkWell(
+                                            splashColor: Colors.transparent,
+                                            focusColor: Colors.transparent,
+                                            hoverColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
+                                            onTap: () async {
+                                              context.pushNamed(
+                                                ReportsWidget.routeName,
+                                                extra: <String, dynamic>{
+                                                  kTransitionInfoKey:
+                                                      TransitionInfo(
+                                                    hasTransition: true,
+                                                    transitionType:
+                                                        PageTransitionType
+                                                            .rightToLeft,
+                                                  ),
+                                                },
+                                              );
+                                            },
+                                            child: FaIcon(
+                                              FontAwesomeIcons.readme,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryText,
+                                              size: 22.0,
+                                            ),
+                                          ),
+                                          InkWell(
+                                            splashColor: Colors.transparent,
+                                            focusColor: Colors.transparent,
+                                            hoverColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
+                                            onTap: () async {
+                                              context.pushNamed(
+                                                ReportsWidget.routeName,
+                                                extra: <String, dynamic>{
+                                                  kTransitionInfoKey:
+                                                      TransitionInfo(
+                                                    hasTransition: true,
+                                                    transitionType:
+                                                        PageTransitionType
+                                                            .rightToLeft,
+                                                  ),
+                                                },
+                                              );
+                                            },
+                                            child: Text(
+                                              'Feeds',
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .bodyMedium
+                                                  .override(
+                                                    font: GoogleFonts.inter(
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                      fontStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .fontStyle,
+                                                    ),
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondaryText,
+                                                    fontSize: 12.0,
+                                                    letterSpacing: 0.0,
+                                                    fontWeight: FontWeight.w600,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMedium
+                                                            .fontStyle,
+                                                  ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    InkWell(
+                                      splashColor: Colors.transparent,
+                                      focusColor: Colors.transparent,
+                                      hoverColor: Colors.transparent,
+                                      highlightColor: Colors.transparent,
+                                      onTap: () async {
+                                        context.pushNamed(
+                                          HomeWidget.routeName,
+                                          extra: <String, dynamic>{
+                                            kTransitionInfoKey: TransitionInfo(
+                                              hasTransition: true,
+                                              transitionType: PageTransitionType
+                                                  .rightToLeft,
+                                            ),
+                                          },
+                                        );
+                                      },
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          InkWell(
+                                            splashColor: Colors.transparent,
+                                            focusColor: Colors.transparent,
+                                            hoverColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
+                                            onTap: () async {
+                                              context.pushNamed(
+                                                ReportIssueWidget.routeName,
+                                                queryParameters: {
+                                                  'authuserId': serializeParam(
+                                                    '',
+                                                    ParamType.String,
+                                                  ),
+                                                }.withoutNulls,
+                                              );
+                                            },
+                                            child: Icon(
+                                              Icons.edit_document,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryText,
+                                              size: 22.0,
+                                            ),
+                                          ),
+                                          InkWell(
+                                            splashColor: Colors.transparent,
+                                            focusColor: Colors.transparent,
+                                            hoverColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
+                                            onTap: () async {
+                                              context.pushNamed(
+                                                ReportIssueWidget.routeName,
+                                                queryParameters: {
+                                                  'authuserId': serializeParam(
+                                                    '',
+                                                    ParamType.String,
+                                                  ),
+                                                }.withoutNulls,
+                                                extra: <String, dynamic>{
+                                                  kTransitionInfoKey:
+                                                      TransitionInfo(
+                                                    hasTransition: true,
+                                                    transitionType:
+                                                        PageTransitionType
+                                                            .rightToLeft,
+                                                  ),
+                                                },
+                                              );
+                                            },
+                                            child: Text(
+                                              'Report',
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .bodyMedium
+                                                  .override(
+                                                    font: GoogleFonts.inter(
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                      fontStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .fontStyle,
+                                                    ),
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondaryText,
+                                                    fontSize: 12.0,
+                                                    letterSpacing: 0.0,
+                                                    fontWeight: FontWeight.w600,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMedium
+                                                            .fontStyle,
+                                                  ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              );
+            },
           ),
         ),
       ),

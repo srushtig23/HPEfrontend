@@ -11,6 +11,8 @@ import 'package:simple_gradient_text/simple_gradient_text.dart';
 import 'create_account_model.dart';
 export 'create_account_model.dart';
 
+/// take this nav component, when I select that particular button it should
+/// change colour to orange
 class CreateAccountWidget extends StatefulWidget {
   const CreateAccountWidget({super.key});
 
@@ -101,7 +103,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget>
       },
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: Color(0xFFFCE2D3),
+        backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
         body: SafeArea(
           top: true,
           child: Stack(
@@ -172,7 +174,8 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget>
                                                           .fontStyle,
                                                 ),
                                             colors: [
-                                              Color(0xFD2C010A),
+                                              FlutterFlowTheme.of(context)
+                                                  .tertiary,
                                               Color(0xFF661D07)
                                             ],
                                             gradientDirection:
@@ -211,7 +214,10 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget>
                                                                   .labelMedium
                                                                   .fontStyle,
                                                         ),
-                                                        color: Colors.black,
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primaryText,
                                                         fontSize: 20.0,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
@@ -239,6 +245,10 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget>
                                                           fontStyle:
                                                               FontStyle.italic,
                                                         ),
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primaryText,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
                                                             FlutterFlowTheme.of(
@@ -251,7 +261,10 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget>
                                                   enabledBorder:
                                                       OutlineInputBorder(
                                                     borderSide: BorderSide(
-                                                      color: Color(0xFF0B0B0B),
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primaryText,
                                                       width: 1.0,
                                                     ),
                                                     borderRadius:
@@ -293,7 +306,10 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget>
                                                             10.0),
                                                   ),
                                                   filled: true,
-                                                  fillColor: Color(0xFFFEF5EB),
+                                                  fillColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .primaryBackground,
                                                   contentPadding:
                                                       EdgeInsetsDirectional
                                                           .fromSTEB(12.0, 17.0,
@@ -312,7 +328,9 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget>
                                                         fontStyle:
                                                             FontStyle.italic,
                                                       ),
-                                                      color: Color(0xA114181B),
+                                                      color: FlutterFlowTheme
+                                                              .of(context)
+                                                          .primaryBackground,
                                                       fontSize: 16.0,
                                                       letterSpacing: 0.0,
                                                       fontWeight:
@@ -371,7 +389,9 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget>
                                                                   .fontStyle,
                                                         ),
                                                         color:
-                                                            Color(0xFF020202),
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primaryText,
                                                         fontSize: 20.0,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
@@ -399,6 +419,10 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget>
                                                           fontStyle:
                                                               FontStyle.italic,
                                                         ),
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primaryText,
                                                         fontSize: 14.0,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
@@ -412,7 +436,10 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget>
                                                   enabledBorder:
                                                       OutlineInputBorder(
                                                     borderSide: BorderSide(
-                                                      color: Color(0xFF0B0B0B),
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primaryText,
                                                       width: 1.0,
                                                     ),
                                                     borderRadius:
@@ -456,7 +483,10 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget>
                                                             8.0),
                                                   ),
                                                   filled: true,
-                                                  fillColor: Color(0xFFFEF5EB),
+                                                  fillColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .primaryBackground,
                                                   contentPadding:
                                                       EdgeInsetsDirectional
                                                           .fromSTEB(12.0, 17.0,
@@ -546,7 +576,9 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget>
                                                                   .fontStyle,
                                                         ),
                                                         color:
-                                                            Color(0xFF080808),
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primaryText,
                                                         fontSize: 20.0,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
@@ -560,8 +592,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget>
                                                                 .labelMedium
                                                                 .fontStyle,
                                                       ),
-                                                  hintText:
-                                                      'Confirm password\n',
+                                                  hintText: 'Confirm password',
                                                   hintStyle: FlutterFlowTheme
                                                           .of(context)
                                                       .labelMedium
@@ -575,6 +606,10 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget>
                                                           fontStyle:
                                                               FontStyle.italic,
                                                         ),
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primaryText,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
                                                             FlutterFlowTheme.of(
@@ -587,7 +622,10 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget>
                                                   enabledBorder:
                                                       OutlineInputBorder(
                                                     borderSide: BorderSide(
-                                                      color: Colors.black,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primaryText,
                                                       width: 1.0,
                                                     ),
                                                     borderRadius:
@@ -631,7 +669,10 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget>
                                                             10.0),
                                                   ),
                                                   filled: true,
-                                                  fillColor: Color(0xFFFEF5EB),
+                                                  fillColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .primaryBackground,
                                                   contentPadding:
                                                       EdgeInsetsDirectional
                                                           .fromSTEB(12.0, 17.0,
@@ -668,10 +709,9 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget>
                                                         fontStyle:
                                                             FontStyle.italic,
                                                       ),
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .secondaryText,
+                                                      color: FlutterFlowTheme
+                                                              .of(context)
+                                                          .secondaryBackground,
                                                       letterSpacing: 0.0,
                                                       fontWeight:
                                                           FlutterFlowTheme.of(
@@ -730,6 +770,27 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget>
                                                 context.pushNamedAuth(
                                                     LoginWidget.routeName,
                                                     context.mounted);
+
+                                                ScaffoldMessenger.of(context)
+                                                    .showSnackBar(
+                                                  SnackBar(
+                                                    content: Text(
+                                                      'Succesfully created your account',
+                                                      style: TextStyle(
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primaryText,
+                                                      ),
+                                                    ),
+                                                    duration: Duration(
+                                                        milliseconds: 4000),
+                                                    backgroundColor:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .secondary,
+                                                  ),
+                                                );
                                               },
                                               text: 'Create account',
                                               options: FFButtonOptions(
@@ -796,7 +857,9 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget>
                                                             .bodyMedium
                                                             .fontStyle,
                                                   ),
-                                                  color: Colors.black,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryText,
                                                   letterSpacing: 0.0,
                                                   fontWeight:
                                                       FlutterFlowTheme.of(
@@ -883,29 +946,44 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget>
                                 tabletLandscape: false,
                                 desktop: false,
                               ))
-                                ClipRRect(
-                                  borderRadius: BorderRadius.circular(8.0),
-                                  child: Image.asset(
-                                    'assets/images/1safe.png',
-                                    width: 80.0,
-                                    height: 80.0,
-                                    fit: BoxFit.cover,
-                                  ),
-                                ),
-                              if (responsiveVisibility(
-                                context: context,
-                                tablet: false,
-                                tabletLandscape: false,
-                                desktop: false,
-                              ))
-                                ClipRRect(
-                                  borderRadius: BorderRadius.circular(8.0),
-                                  child: Image.asset(
-                                    'assets/images/A_group_of_Multiethnic_women_illustration___Premium_AI-generated_image.png',
-                                    width: 100.0,
-                                    height: 100.0,
-                                    fit: BoxFit.cover,
-                                    alignment: Alignment(0.0, 1.0),
+                                Align(
+                                  alignment: AlignmentDirectional(0.0, 1.0),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      if (responsiveVisibility(
+                                        context: context,
+                                        tablet: false,
+                                        tabletLandscape: false,
+                                        desktop: false,
+                                      ))
+                                        ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
+                                          child: Image.asset(
+                                            'assets/images/A_group_of_Multiethnic_women_illustration___Premium_AI-generated_image.png',
+                                            width: 115.8,
+                                            height: 130.1,
+                                            fit: BoxFit.cover,
+                                          ),
+                                        ),
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            120.0, 0.0, 0.0, 0.0),
+                                        child: ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
+                                          child: Image.asset(
+                                            'assets/images/1safe.png',
+                                            width: 109.6,
+                                            height: 114.9,
+                                            fit: BoxFit.cover,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ),
                             ],
@@ -921,7 +999,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget>
                 phone: false,
               ))
                 Align(
-                  alignment: AlignmentDirectional(1.04, 1.06),
+                  alignment: AlignmentDirectional(1.06, 1.23),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(8.0),
                     child: Image.asset(
@@ -938,7 +1016,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget>
                 phone: false,
               ))
                 Align(
-                  alignment: AlignmentDirectional(-1.14, 1.06),
+                  alignment: AlignmentDirectional(-1.04, 1.07),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(8.0),
                     child: Image.asset(

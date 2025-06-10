@@ -9,12 +9,8 @@ class LatLngStructStruct extends BaseStruct {
   LatLngStructStruct({
     double? latitude,
     double? longitude,
-    double? selectedLat,
-    double? selectedLng,
   })  : _latitude = latitude,
-        _longitude = longitude,
-        _selectedLat = selectedLat,
-        _selectedLng = selectedLng;
+        _longitude = longitude;
 
   // "latitude" field.
   double? _latitude;
@@ -34,32 +30,10 @@ class LatLngStructStruct extends BaseStruct {
 
   bool hasLongitude() => _longitude != null;
 
-  // "selectedLat" field.
-  double? _selectedLat;
-  double get selectedLat => _selectedLat ?? 0.0;
-  set selectedLat(double? val) => _selectedLat = val;
-
-  void incrementSelectedLat(double amount) =>
-      selectedLat = selectedLat + amount;
-
-  bool hasSelectedLat() => _selectedLat != null;
-
-  // "selectedLng" field.
-  double? _selectedLng;
-  double get selectedLng => _selectedLng ?? 0.0;
-  set selectedLng(double? val) => _selectedLng = val;
-
-  void incrementSelectedLng(double amount) =>
-      selectedLng = selectedLng + amount;
-
-  bool hasSelectedLng() => _selectedLng != null;
-
   static LatLngStructStruct fromMap(Map<String, dynamic> data) =>
       LatLngStructStruct(
         latitude: castToType<double>(data['latitude']),
         longitude: castToType<double>(data['longitude']),
-        selectedLat: castToType<double>(data['selectedLat']),
-        selectedLng: castToType<double>(data['selectedLng']),
       );
 
   static LatLngStructStruct? maybeFromMap(dynamic data) => data is Map
@@ -69,8 +43,6 @@ class LatLngStructStruct extends BaseStruct {
   Map<String, dynamic> toMap() => {
         'latitude': _latitude,
         'longitude': _longitude,
-        'selectedLat': _selectedLat,
-        'selectedLng': _selectedLng,
       }.withoutNulls;
 
   @override
@@ -81,14 +53,6 @@ class LatLngStructStruct extends BaseStruct {
         ),
         'longitude': serializeParam(
           _longitude,
-          ParamType.double,
-        ),
-        'selectedLat': serializeParam(
-          _selectedLat,
-          ParamType.double,
-        ),
-        'selectedLng': serializeParam(
-          _selectedLng,
           ParamType.double,
         ),
       }.withoutNulls;
@@ -105,16 +69,6 @@ class LatLngStructStruct extends BaseStruct {
           ParamType.double,
           false,
         ),
-        selectedLat: deserializeParam(
-          data['selectedLat'],
-          ParamType.double,
-          false,
-        ),
-        selectedLng: deserializeParam(
-          data['selectedLng'],
-          ParamType.double,
-          false,
-        ),
       );
 
   @override
@@ -124,25 +78,18 @@ class LatLngStructStruct extends BaseStruct {
   bool operator ==(Object other) {
     return other is LatLngStructStruct &&
         latitude == other.latitude &&
-        longitude == other.longitude &&
-        selectedLat == other.selectedLat &&
-        selectedLng == other.selectedLng;
+        longitude == other.longitude;
   }
 
   @override
-  int get hashCode => const ListEquality()
-      .hash([latitude, longitude, selectedLat, selectedLng]);
+  int get hashCode => const ListEquality().hash([latitude, longitude]);
 }
 
 LatLngStructStruct createLatLngStructStruct({
   double? latitude,
   double? longitude,
-  double? selectedLat,
-  double? selectedLng,
 }) =>
     LatLngStructStruct(
       latitude: latitude,
       longitude: longitude,
-      selectedLat: selectedLat,
-      selectedLng: selectedLng,
     );
